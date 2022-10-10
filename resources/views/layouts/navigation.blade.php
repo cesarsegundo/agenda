@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/my-schedule" :active="request()->routeIs('my-schedule')">
+                    <x-nav-link href="/mi-agenda" :active="request()->routeIs('my-schedule')">
                         {{ __('Mi agenda') }}
                     </x-nav-link>
                 </div>
