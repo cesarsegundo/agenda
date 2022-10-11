@@ -14,6 +14,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/mi-agenda', [MyScheduleController::class, 'index'])->name('my-schedule');
     Route::get('/mi-agenda/crear', [MyScheduleController::class, 'create'])->name('my-schedule.create');
     Route::post('/mi-agenda', [MyScheduleController::class, 'store'])->name('my-schedule.store');
+    Route::delete('/mi-agenda/{scheduler}', [MyScheduleController::class, 'destroy'])->name('my-schedule.destroy');
 });
 
 /* Route::get('/dashboard', function () {
