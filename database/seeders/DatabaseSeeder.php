@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Juan',
             'email' => 'Juan@gmail.com'
         ]);
-        $users = \App\Models\User::factory(10)->create();
+        $users = \App\Models\User::factory(5)->create();
 
         //Asignación de roles a cada usuario
         $userAdmin->assignRole('admin');

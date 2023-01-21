@@ -17,23 +17,23 @@ class ServicesSeeder extends Seeder
     public function run()
     {
         Service::create([
-            'name' => 'Tinturado de cabello',
+            'name' => 'Arquitectura',
             'duration' => 180,
         ]);
         Service::create([
-            'name' => 'Corte de cabello',
+            'name' => 'Construcción y mantenimiento',
             'duration' => 40,
         ]);
         Service::create([
-            'name' => 'Maquillaje básico',
+            'name' => 'Administración de condominios y residencias',
             'duration' => 30,
         ]);
         Service::create([
-            'name' => 'Maquillaje avansado',
+            'name' => 'Desarrollo móvil',
             'duration' => 60,
         ]);
         Service::create([
-            'name' => 'Pintado de uñas básico',
+            'name' => 'Desarrollo web',
             'duration' => 40,
         ]);
     }
