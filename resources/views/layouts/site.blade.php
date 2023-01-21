@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,9 @@
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <a class="flex" href="/">
-          <x-application-logo />
-          <span class="text-3xl ml-2">AGENDA</span>
+          {{-- <x-application-logo class="w-4" /> --}}
+          <img src="https://grupoinfoarq.com/assets/images/logo_animated_2.gif" alt="">
+          {{-- <span class="text-3xl ml-2"></span> --}}
         </a>
         <div class="block lg:hidden pr-4">
           <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">

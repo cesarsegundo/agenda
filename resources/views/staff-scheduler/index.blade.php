@@ -20,7 +20,7 @@
 
                     <div class="flex">
                         <div class="w-1/3">
-                            <x-calendar url-handler="{{route('my-schedule')}}"></x-calendar>
+                            <x-calendar url-handler="{{route('staff-scheduler.index')}}"></x-calendar>
                         </div>
                         <div class="w-2/3 py-8 px-5">
                             <h3 class="font-bold text-lg">Mis citas para: {{ $date->isoFormat('dddd D MMMM YYYY')  }}</h3>
@@ -28,23 +28,26 @@
                             @foreach ($dayScheduler as $schedule)
                                 <div class="flex items-center mt-2 bg-indigo-100 p-3 rounded">
                                     <div class="w-1/2">
-                                        <div>{{ $schedule->service->name }} con {{ $schedule->staffUser->name}}</div>
+                                        <div>{{ $schedule->service->name }} a {{ $schedule->clientUser->name }}
+                                        @if (auth()->user()->hasRole('admin'))
+                                            con {{$schedule->staffUser->name}}
+                                        @endif
+                                        </div>
                                         <div>Desde <span class="font-bold">{{ $schedule->from->format('H:i')}}</span> hasta <span class="font-bold">{{ $schedule->to->format('H:i ') }}</span></div>
                                     </div>
                                     <div>
                                         {{-- Ejecuta el policy para que no aparesca el boton en citas pasadas --}}
-                                        {{-- @can('delete', $schedule) --}}
-                                            <form class="inline-block" method="POST" onsubmit="return confirm('¿Realmente desea cancelar esta cita?')" action="{{ route('my-schedule.destroy', ['scheduler' => $schedule->id])}}">
-                                                @method('DELETE')
-                                                @csrf
-                                                <x-button>Cancelar</x-button>
-                                            </form>
-                                        {{-- @endcan --}}
-                                        <x-link href="{{ route('my-schedule.edit', ['scheduler' => $schedule->id]) }}">Reagendar</x-link>
+                                        @if (auth()->user()->hasRole('admin'))
+                                        <form class="inline-block" method="POST" onsubmit="return confirm('¿Realmente desea cancelar esta cita?')" action="{{ route('staff-scheduler.destroy', ['scheduler' => $schedule->id])}}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <x-button>Cancelar</x-button>
+                                        </form>
+                                        @endif
+                                        <x-link href="{{ route('staff-scheduler.edit', ['scheduler' => $schedule->id]) }}">Reagendar</x-link>
                                     </div>
                                 </div>
                             @endforeach
-                            <x-link class="mt-3" href="{{ route('my-schedule.create', ['date' => $date->format('Y-m-d')]) }}">Reservar cita</x-link>
                         </div>
                     </div>
                 </div>

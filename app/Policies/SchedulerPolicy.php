@@ -53,7 +53,11 @@ class SchedulerPolicy
      */
     public function update(User $user, Scheduler $scheduler)
     {
-        //
+        //proteccion de la ruta para que el usuario autoentificado solo pueda reagendar sus citas
+        if (($scheduler->client_user_id != $user->id) AND ($scheduler->staff_user_id != $user->id)) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -70,9 +74,9 @@ class SchedulerPolicy
             return false;
         }
         //validacion para que el usuario logeado solo pueda eliminar sus reservaciones
-        if ($scheduler->client_user_id != $user->id) {
-            return false;
-        }
+        // if (($scheduler->client_user_id != $user->id) AND ($scheduler->staff_user_id != $user->id)) {
+        //     return false;
+        // }
         return true;
     }
 
